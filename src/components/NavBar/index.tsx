@@ -21,22 +21,22 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="h-[140px] fixed w-full">
+    <nav className="h-[140px] fixed w-full z-50">
       <div
         className=" bg-indigo-950 h-[70px] 
       flex flex-row items-center
       place-content-between
-      md:place-content-start
-      
+      md:place-content-start border-b-0
       px-4"
       >
         {/* Logomarca */}
-        <Link href="/">
+        <Link href="/" className="overflow-hidden">
           <Image
             src="/images/logoMarca_noBack.webp"
             alt="LisLock"
             width={130}
             height={70}
+            className="hover:scale-105 transition object-cover object-center"
           />
         </Link>
 
@@ -52,7 +52,7 @@ const NavBar = () => {
         {/* Menu pages  @media width < 768px*/}
         <button
           onClick={handleDropbox}
-          className="block md:hidden"
+          className="block md:hidden cursor-pointer"
           aria-label="Toggle menu"
         >
           <LuMenu className="text-indigo-50 text-6xl" />
@@ -78,14 +78,22 @@ const NavBar = () => {
       {/* Cellphone contact */}
       <div className="h-[70px] bg-indigo-100 flex flex-row items-center justify-center gap-2.5">
         <Link
-          className="h-12 bg-amber-500 text-lg text-amber-50 w-[200px] flex items-center justify-center gap-2 rounded-md font-extrabold border-1 border-indigo-950 "
+          className="h-12 bg-amber-500 w-[195px] 
+         text-lg text-amber-50 font-extrabold 
+         flex items-center justify-center gap-2 
+         rounded-md
+         border-2 border-amber-800 hover:border-amber-700 hover:border-2 hover:scale-105 transition"
           href="/contact?type=Ligar"
         >
           <BsTelephoneFill /> Ligar 933 401 695
         </Link>
         {/* WhatsApp contact */}
         <Link
-          className="bg-green-500 text-xl text-amber-50 w-[180px] h-12 flex items-center justify-center gap-2 border-1 border-indigo-950 rounded-md font-extrabold"
+          className="
+          w-[180px] h-12
+          bg-green-500 text-xl text-amber-50  font-extrabold
+          flex items-center justify-center gap-2 
+          border-2 border-green-700 rounded-md hover:scale-105 hover:border-green-900 transition"
           href="/contact?type=WhatsApp"
         >
           <FaWhatsapp /> WhatsApp
