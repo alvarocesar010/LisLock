@@ -43,7 +43,11 @@ const NavBar = () => {
         {/* Menu pages @media width > 768px */}
         <div className="hidden text-indigo-50 text-2xl font-semibold gap-18 md:flex items-center w-full justify-center">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
+            <Link
+              className="hover:bg-[rgba(224,231,255,0.1)] p-2 rounded-xl bg-opacity-5"
+              key={link.href}
+              href={link.href}
+            >
               {link.label}
             </Link>
           ))}
