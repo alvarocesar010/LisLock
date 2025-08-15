@@ -10,12 +10,12 @@ const WhyUs = () => {
   const qualificationsList: WhyUsProps[] = [
     {
       title: "Técnicos certificados",
-      content: "Nossos técnicos são certificados para melhor te atender",
+      content: "Os nossos técnicos são certificados para melhor o servir",
       src: "/images/certified.webp",
     },
     {
       title: "Preços justos e sem surpresas",
-      content: "Você sabe exatamente o que vai pagar antes de começarmos",
+      content: "Sabe exatamente o que vai pagar antes de começarmos",
       src: "/images/fairPrice.webp",
     },
     {
@@ -23,7 +23,11 @@ const WhyUs = () => {
       content: "Aceitamos Cartão e MB Way",
       src: "/images/Payments.webp",
     },
-    { title: "", content: "", src: "/images/garantia.webp" },
+    {
+      title: "Garantia Produtos e serviços",
+      content: "Oferecemos garantia no nossos produtos e serviços realizados!",
+      src: "/images/garantia.webp",
+    },
   ];
 
   return (
@@ -48,12 +52,8 @@ const WhyUs = () => {
                 alt="Garantia"
                 className="mb-4 rounded-full"
               />
-              <h3 className="text-lg font-semibold mb-2">
-                Garantia em serviços
-              </h3>
-              <p className="text-gray-700">
-                Serviços e produtos com garantia de qualidade
-              </p>
+              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-gray-700">{item.content}</p>
             </div>
           ))}
         </div>

@@ -39,27 +39,33 @@ const ProductLink = () => {
   return (
     <>
       {/* Products list */}
-      <p className="italic text-center">
+      <p className="italic text-center text-lg md:text-xl">
         Conheça nossos serviços clicando nos links abaixo:
       </p>
-      <div className="grid grid-cols-2 mx-auto gap-3">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-lg mx-auto md:max-w-3xl">
         {productsList.map((item) => (
           <Link
             key={item.product}
             href={item.link}
-            className="h-24 flex flex-row justify-center items-center gap-2 bg-indigo-100 p-2 rounded-xl
-            active:bg-indigo-400 active:scale-95
-            border-1 border-indigo-600 transition duration-150
-            "
+            className="flex items-center justify-between bg-slate-100 p-4 md:p-5 rounded-2xl shadow-md border border-slate-200 
+                 hover:shadow-xl hover:-translate-y-1 hover:border-indigo-400 transition active:bg-slate-200 active:scale-95"
           >
-            {item.product}
-            <Image
-              className="rounded-xl object-cover"
-              width={70}
-              height={70}
-              src={item.src}
-              alt={item.product}
-            />
+            {/* Text */}
+            <span className="text-lg md:text-xl font-semibold text-slate-800">
+              {item.product}
+            </span>
+
+            {/* Image */}
+            <div className="flex-shrink-0">
+              <Image
+                className="rounded-xl object-cover shadow-sm"
+                width={70}
+                height={70}
+                src={item.src}
+                alt={item.product}
+              />
+            </div>
           </Link>
         ))}
       </div>
