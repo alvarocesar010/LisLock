@@ -1,5 +1,7 @@
 import Carousel from "@/components/Carousel";
 import ProductLink from "@/components/ProductLink";
+import WhyUs from "@/components/WhyUs";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -9,20 +11,14 @@ export default function Home() {
       </div>
 
       <div className="p-3 flex flex-col gap-6">
-        <h1 className="text-3xl/tight font-semibold text-center ">
+        <h1 className="text-3xl/tight text-center font-extrabold text-indigo-950">
           LisLock <br /> Segurança e qualidade na prestação de serviços!
         </h1>
 
         <ProductLink />
       </div>
 
-      <div className="bg-indigo-50">
-        <h2>Por que escolher a LisLock?</h2>
-        <p>Temos técnicos certificados para te atender</p>
-        <p>Preços justos e sem surpresas</p>
-        <p>Pagamento facilitado (Cartão e MB Way)</p>
-        <p>Produtos com garantia</p>
-      </div>
+      <WhyUs />
     </main>
   );
 }
