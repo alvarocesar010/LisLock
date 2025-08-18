@@ -9,10 +9,6 @@ import { useState } from "react";
 const NavBar = () => {
   const [dropbox, setDropbox] = useState(false);
 
-  const handleDropbox = () => {
-    setDropbox((prev) => !prev);
-  };
-
   const links = [
     { href: "/", label: "Home" },
     { href: "/servicos", label: "Serviços" },
@@ -21,84 +17,71 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="h-[140px] fixed w-full z-50">
-      <div
-        className=" bg-indigo-950 h-[70px] 
-      flex flex-row items-center
-      place-content-between
-      md:place-content-start border-b-0
-      px-4"
-      >
-        {/* Logomarca */}
-        <Link href="/" className="overflow-hidden">
+    <nav className="fixed top-0 left-0 w-full z-50 shadow-md">
+      {/* Top Nav */}
+      <div className="bg-indigo-950 h-[60px] flex items-center justify-between md:justify-start px-4">
+        {/* Logo */}
+        <Link href="/" className="shrink-0">
           <Image
             src="/images/logoMarca_noBack.webp"
             alt="LisLock"
-            width={130}
-            height={70}
-            className="hover:scale-105 transition object-cover object-center"
+            width={140}
+            height={55}
+            className="hover:scale-105 transition-transform object-contain"
           />
         </Link>
 
-        {/* Menu pages @media width > 768px */}
-        <div className="hidden text-indigo-50 text-2xl font-semibold gap-18 md:flex items-center w-full justify-center">
+        {/* Desktop Links */}
+        <div className="hidden md:flex flex-1 justify-center gap-10 text-indigo-50 text-lg font-semibold">
           {links.map((link) => (
             <Link
-              className="hover:bg-[rgba(224,231,255,0.1)] p-2 rounded-xl bg-opacity-5"
               key={link.href}
               href={link.href}
+              className="px-3 py-1 rounded-lg hover:bg-indigo-800/40 transition"
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Menu pages  @media width < 768px*/}
+        {/* Mobile Menu Button */}
         <button
-          onClick={handleDropbox}
-          className="block md:hidden cursor-pointer"
+          onClick={() => setDropbox(!dropbox)}
+          className="block md:hidden p-1"
           aria-label="Toggle menu"
         >
-          <LuMenu className="text-indigo-50 text-6xl" />
+          <LuMenu className="text-indigo-50 text-4xl" />
         </button>
 
-        <div
-          className={`absolute top-[60px] right-6 bg-indigo-50 flex flex-col items-center justify-center w-55 rounded-lg opacity-97 border border-indigo-950 
-          ${dropbox ? "flex" : "hidden"}
-          `}
-        >
-          {links.map((link) => (
-            <Link
-              onClick={() => setDropbox(false)}
-              key={link.href}
-              className="h-16 text-indigo-950 text-2xl/normal font-bold flex items-center justify-center border-b border-indigo-950 w-5/6 last:border-b-0"
-              href={link.href}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        {/* Mobile Dropdown */}
+        {dropbox && (
+          <div className="absolute top-[60px] right-4 w-52 bg-indigo-50 rounded-lg shadow-lg border border-indigo-200 overflow-hidden">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setDropbox(false)}
+                className="block px-4 py-4 text-indigo-950 text-lg font-medium border-b border-indigo-200 last:border-b-0 hover:bg-indigo-100 text-center"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-      {/* Cellphone contact */}
-      <div className="h-[70px] bg-indigo-100 flex flex-row items-center justify-center gap-2.5">
+
+      {/* Contact Buttons */}
+      <div className="h-[60px] bg-indigo-100 flex items-center justify-center gap-3 px-2">
         <Link
-          className="h-12 bg-amber-500 w-[195px] 
-         text-lg text-amber-50 font-extrabold 
-         flex items-center justify-center gap-2 
-         rounded-md
-         border-2 border-amber-800 hover:border-amber-700 hover:border-2 hover:scale-105 transition"
           href="/contact?type=Ligar"
+          className="h-12 w-[195px] flex items-center justify-center gap-2 rounded-lg bg-amber-500 text-amber-50 font-bold text-lg border-2 border-amber-700 hover:border-amber-600 hover:scale-105 active:scale-95 transition"
         >
           <BsTelephoneFill /> Ligar 933 401 695
         </Link>
-        {/* WhatsApp contact */}
+
         <Link
-          className="
-          w-[180px] h-12
-          bg-green-500 text-xl text-amber-50  font-extrabold
-          flex items-center justify-center gap-2 
-          border-2 border-green-700 rounded-md hover:scale-105 hover:border-green-900 transition"
           href="/contact?type=WhatsApp"
+          className="h-12 w-[180px] flex items-center justify-center gap-2 rounded-lg bg-green-500 text-amber-50 font-bold text-lg border-2 border-green-700 hover:border-green-900 hover:scale-105 active:scale-95 transition"
         >
           <FaWhatsapp /> WhatsApp
         </Link>

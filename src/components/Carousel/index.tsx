@@ -30,7 +30,7 @@ export default function Carousel() {
           key={images[index]}
           src={images[index]}
           alt={`Slide ${index + 1}`}
-          className="w-full h-72 md:h-96 object-cover"
+          className="w-full h-50 md:h-96 object-cover"
           initial={{ opacity: 0, x: 90 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -90 }}
