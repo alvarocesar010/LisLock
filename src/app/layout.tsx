@@ -13,10 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="PT-pt">
       <body>
         <NavBar />
-        <section className="pt-[140px]">{children}</section>
+        <main className="pt-[140px]">{children}</main>
       </body>
     </html>
   );
